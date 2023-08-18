@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {% block css%}
+        <link rel="stylesheet" href="{% static 'css/add_record.css' %}">
+    {% endblock %}
+    <div class="col-md-4 offset-md-4 mt-5">
+        <div>
+            <h5>Add Student Record</h5>
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <a href="{% url 'dashboard' %}" class="btn btn-secondary">Back</a>
+                <button class="btn btn-warning">Add Record</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

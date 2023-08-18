@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    {% block css %}
+        <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    {% endblock %}
+    <div class="container-fluid">
+        <div class="row">
+            
+            <div class="col-md-12">
+                <h5 class="mb-3 mt-3">Students</h5>
+                <div class="row m-2">
+                    <div class="download-row m-2">
+                        <a href="{% url 'export_csv' %}" class="text-dark mr-2 ml-2"><i class="fa-solid fa-download"></i>Export csv</a>
+
+                        <a href="{% url 'export_csv' %}" class="text-dark m-2"><i class="fa-solid fa-download"></i>Export pdf</a>
+                    </div>  
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-bars"></i>
+                        Student Records
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Student Id</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Course</th>
+                                    <th scope="col">Gpa</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if records %}
+                                    {% for record in records %}
+                                        <tr>
+                                            <td scope="row"><a href="{% url 'record' record.id %}">{{ record.id }}</a></td>
+                                            <td>
+                                                {{ record.first_name }}
+                                                {{ record.last_name }}
+                                            </td>
+                                            <td>{{ record.email }}</td>
+                                            <td>{{ record.course }}</td>
+                                            <td>{{ record.gpa }} pts</td>
+                                            <td>
+                                                <a href="{% url 'edit_record' record.id %}" class="mr-4"><i class="fa-solid fa-pen-to-square"></i>Edit</a>
+                                                <a href="{% url 'delete_record' record.id %}" class="text-danger"><i class="fa-solid fa-trash-can"></i>Delete</a>
+                                                <a href=""></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <div class="alert alert-danger" role="alert">
+                                        No Record Found in The Database!!
+                                    </div>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}

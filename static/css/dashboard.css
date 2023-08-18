@@ -1,0 +1,8 @@
+body {
+    font-family: 'Times New Roman', serif;
+}
+
+.download-row {
+    justify-content: end;
+    align-items: flex-end;
+}

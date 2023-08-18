@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {% block css%}
+    {% endblock %}
+    <div class="col-md-4 offset-md-4 mt-5">
+        <div>
+            <div class="card mb-2">
+                <div class="card-header">
+                    <strong>Name: </strong>{{student_record.first_name }}
+                    {{student_record.last_name }}
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <strong>Email: </strong>{{ student_record.email }}
+                    </p>
+
+                    <p class="card-text">
+                        <strong>Course: </strong>{{ student_record.course }}
+                    </p>
+
+                    <p class="card-text">
+                        <strong>Gpa: </strong>{{ student_record.gpa }}
+                    </p>
+                    
+                </div>
+                
+            </div>
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary">Back</a>
+        </div>
+    </div>
+{% endblock %}

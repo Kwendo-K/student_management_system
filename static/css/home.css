@@ -1,0 +1,12 @@
+body {
+    background-color: whitesmoke;
+    font-family: 'Times New Roman', serif;
+}
+.form {
+    justify-content: center;
+    align-items: center;
+    margin: 90px;
+}
+.form input {
+    border-radius: 12px;
+}
